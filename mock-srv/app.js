@@ -2,6 +2,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import AutoLoad from "@fastify/autoload";
 import cors from "@fastify/cors";
+import websocket from "@fastify/websocket";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,7 +12,12 @@ export const options = {};
 
 export default async function (fastify, opts) {
   // Place here your custom code!
-  fastify.register(cors);
+
+  // Register CORS
+  fastify.register(cors, {});
+  // Register Websocket
+  fastify.register(websocket, {});
+
   // Do not touch the following lines
 
   // This loads all plugins defined in plugins
