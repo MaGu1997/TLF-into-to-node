@@ -1,6 +1,3 @@
-"use strict";
-
-// API URL
 const API = "http://localhost:3000";
 const WS_API = "ws://localhost:3000";
 
@@ -39,10 +36,17 @@ const category = document.querySelector("#category");
 const add = document.querySelector("#add");
 
 let socket = null;
-// Realtime orders handler using WebSocket
+// Realtime orders via Websocket
 const realtimeOrders = (category) => {
-  if (socket) socket.close();
-  socket = new WebSocket(`${WS_API}/orders/${category}`);
+  if (socket === null) {
+    socket = new WebSocket(`${WS_API}/orders/${category}`);
+  } else {
+    socket.send(
+      // Send update-category command to server
+      JSON.stringify({ cmd: "update-category", payload: { category } })
+    );
+  }
+  // Listen for messages
   socket.addEventListener("message", ({ data }) => {
     try {
       const { id, total } = JSON.parse(data);
