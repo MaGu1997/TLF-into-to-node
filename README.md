@@ -7,3 +7,14 @@
 3. Open a terminal, cd into mock-srv. Run pnpm run dev
 4. In another terminal, pnpm run static inside your root folder
 
+## Process of Real-time api chapter
+### Learning Objectives
+By the end of this chapter, you should be able to:
+
+Explain and apply the most common real-time web protocol: WebSockets.
+Implement bidirectional communication between server and client.
+Discover how to cater to both read and write real-time functionality.
+
+
+1. 
+
